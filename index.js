@@ -40,7 +40,7 @@ app.get('/', async (req, res) => {
 
 // * Code for Route 2 goes here
 
-app.get('/updates-cobj', (req, res) => {
+app.get('/update-cobj', (req, res) => {
   res.render('updates', { title: 'Create New Pet' });
 });
 
@@ -53,7 +53,29 @@ app.get('/updates-cobj', (req, res) => {
 // * Code for Route 3 goes here
 
 
+app.post('/update-cobj', async (req, res) => {
+    const update = {
+        properties: {
+            "name": req.body.name,
+            "breed": req.body.breed,
+            "age": req.body.age
+        }
+    }
 
+    const createPetURL = `https://api.hubapi.com/crm/v3/objects/pets/`;
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    };
+
+    try { 
+        await axios.post(createPetURL, update, { headers } );
+        res.redirect('/');
+    } catch(err) {
+        console.error(err);
+    }
+
+});
 
 
 
