@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+  body
+    h1= title
+    form(action="/updates-cobj" method="POST")
+      div
+        label(for="name") Name:
+        input(type="text" name="name" required)
+      div
+        label(for="age") Age:
+        input(type="number" name="age" required)
+      div
+        label(for="breed") Breed:
+        input(type="text" name="breed" required)
+      div
+        button(type="submit") Submit

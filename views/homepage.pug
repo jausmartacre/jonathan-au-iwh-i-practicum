@@ -1,0 +1,20 @@
+doctype html
+html 
+  head 
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body    
+    h1 Pets 
+    table(border="1" cellpadding="10")
+      thead
+        tr
+          th Name
+          th Breed
+          th Age
+      tbody
+        each pet in data
+          tr
+            td= pet.properties.name || 'Unnamed'
+            td= pet.properties.breed || 'Unknown'
+            td= pet.properties.age || 'N/A'
